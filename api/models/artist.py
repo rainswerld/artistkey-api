@@ -6,8 +6,8 @@ class Artist(models.Model):
   # define fields
   # https://docs.djangoproject.com/en/3.0/ref/models/fields/
   name = models.CharField(max_length=100)
-  current_followers = models.CharField(max_length=100,000,000,000)
-  current_monthly_listeners = models.CharField(max_length=100,000,000,000)
+  current_followers = models.PositiveIntegerField()
+  current_monthly_listeners = models.PositiveIntegerField()
   owner = models.ForeignKey(
       get_user_model(),
       on_delete=models.CASCADE
