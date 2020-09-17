@@ -5,15 +5,19 @@ from .models.artist import Artist
 from .models.track import Track
 from .models.user import User
 
-class ArtistSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Artist
-        fields = ('id', 'name', 'current_followers', 'current_monthly_listeners', 'owner')
-
 class TrackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Track
         fields = ('id', 'track_name', 'spotify_streams', 'artist')
+
+class TrackListenSerializer(TrackSerializer):
+  artist = serializers.StringRelatedField()
+
+class ArtistSerializer(serializers.ModelSerializer):
+    tracks = TrackSerializer(many=True, read_only=True)
+    class Meta:
+        model = Artist
+        fields = ('id', 'name', 'tracks', 'current_followers', 'current_monthly_listeners', 'owner')
 
 class UserSerializer(serializers.ModelSerializer):
     # This model serializer will be used for User creation
