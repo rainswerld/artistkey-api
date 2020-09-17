@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models.user import User
 from .models.artist import Artist
+from .models.track import Track
 
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
@@ -40,3 +41,4 @@ class UserAdmin(BaseUserAdmin):
 # class to format the pages:
 admin.site.register(User, UserAdmin)
 admin.site.register(Artist)
+admin.site.register(Track)

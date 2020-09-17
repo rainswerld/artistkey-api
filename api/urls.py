@@ -1,12 +1,14 @@
 from django.urls import path
 from .views.artist_views import Artists, ArtistDetail
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword
+from .views.track_views import Tracks, TrackDetail
 
 urlpatterns = [
   	# Restful routing
     path('artists/', Artists.as_view(), name='artists'),
-    path('new-artist/', Artists.as_view(), name='new-artist'),
     path('artists/<int:pk>/', ArtistDetail.as_view(), name='artist_detail'),
+    path('new-artist/', Artists.as_view(), name='new-artist'),
+    path('tracks/', Tracks.as_view(), name='tracks'),
     path('sign-up/', SignUp.as_view(), name='sign-up'),
     path('sign-in/', SignIn.as_view(), name='sign-in'),
     path('sign-out/', SignOut.as_view(), name='sign-out'),

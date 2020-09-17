@@ -2,12 +2,18 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from .models.artist import Artist
+from .models.track import Track
 from .models.user import User
 
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
         fields = ('id', 'name', 'current_followers', 'current_monthly_listeners', 'owner')
+
+class TrackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Track
+        fields = ('id', 'track_name', 'spotify_streams', 'artist')
 
 class UserSerializer(serializers.ModelSerializer):
     # This model serializer will be used for User creation

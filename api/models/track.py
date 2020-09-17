@@ -2,25 +2,19 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 # Create your models here.
-class Artist(models.Model):
+class Track(models.Model):
   # define fields
   # https://docs.djangoproject.com/en/3.0/ref/models/fields/
-  name = models.CharField(max_length=100)
-  current_followers = models.PositiveIntegerField()
-  current_monthly_listeners = models.PositiveIntegerField()
-  # tracks = models.ForeignKey(
-  #   'Track',
-  #   related_name='tracks',
-  #   on_delete=models.CASCADE
-  # )
-  owner = models.ForeignKey(
-      get_user_model(),
+  track_name = models.CharField(max_length=100)
+  spotify_streams = models.PositiveIntegerField()
+  artist = models.ForeignKey(
+      'Artist',
       on_delete=models.CASCADE
   )
 
   def __str__(self):
     # This must return a string
-    return f"{self.name} has {self.current_followers} followers. {self.name} has {self.current_monthly_listeners} monthly listeners."
+    return f"{self.track_name}"
 
   def as_dict(self):
     """Returns dictionary version of Artist models"""
