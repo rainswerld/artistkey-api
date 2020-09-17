@@ -9,6 +9,7 @@ class Track(models.Model):
   spotify_streams = models.PositiveIntegerField()
   artist = models.ForeignKey(
       'Artist',
+      related_name='tracks',
       on_delete=models.CASCADE
   )
 
