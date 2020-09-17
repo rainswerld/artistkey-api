@@ -14,14 +14,15 @@ from ..serializers import TrackSerializer, UserSerializer
 class Tracks(generics.ListCreateAPIView):
     permission_classes=(IsAuthenticated,)
     serializer_class = TrackSerializer
-    def get(self, request):
+    def get(self, request, artist_id):
         """Index request"""
         # Get all the tracks:
         # tracks = Track.objects.all()
         # Filter the tracks by artist, so you can only see your owned tracks
-        tracks = Track.objects.filter(artist=request.artist.id)
-        # Run the data through the serializer
-        data = TrackSerializer(tracks, many=True).data
+        artist_tracks = Track.objects.filter(artist=artist_id)
+
+        # # Run the data through the serializer
+        data = TrackSerializer(artist_tracks, many=True).data
         return Response({ 'tracks': data })
 
     def post(self, request):
