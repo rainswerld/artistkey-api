@@ -12,7 +12,7 @@ Eventually, the application will be expanded into being able to track payout rat
 
 ## Important Links
 
-- [Client Repo](https://github.com/rainswerld/artistkey-client)
+- [ArtistKey Client Repo](https://github.com/rainswerld/artistkey-client)
 - [Deployed API](www.link.com)
 - [Deployed Client](www.link.com)
 
