@@ -55,10 +55,10 @@ class TrackDetail(generics.RetrieveUpdateDestroyAPIView):
         data = TrackSerializer(track).data
         return Response({ 'track': data })
 
-    def delete(self, request, pk):
+    def delete(self, request, track_id):
         """Delete request"""
         # Locate artist to delete
-        track = get_object_or_404(Track, pk=pk)
+        track = get_object_or_404(Track, id=track_id)
         # Check the artist's owner agains the user making this request
         # if not request.user.id == track.artist.id:
         #     raise PermissionDenied('Unauthorized, you do not own this artist')
