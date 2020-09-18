@@ -9,6 +9,7 @@ urlpatterns = [
     path('artists/<int:pk>/', ArtistDetail.as_view(), name='artist_detail'),
     path('new-artist/', Artists.as_view(), name='new-artist'),
     path('tracks/<int:artist_id>', Tracks.as_view(), name='tracks'),
+    path('tracks/track/<int:track_id>', TrackDetail.as_view(), name='update-track'),
     path('sign-up/', SignUp.as_view(), name='sign-up'),
     path('sign-in/', SignIn.as_view(), name='sign-in'),
     path('sign-out/', SignOut.as_view(), name='sign-out'),

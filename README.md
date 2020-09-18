@@ -1,51 +1,64 @@
 # Application Title: A Description
 
-This application allows the user to do x, y, and z. Maybe here's a reason why I wanted to do this project, or came up with this idea.
+ArtistKey is a SPA designed to help artist managers benchmark where their artists are financially based on the average payout rate from Spotify streams. Right now, that rate sits at about $0.00318, quite low! ArtistKey allows managers to keep track of how their releases are performing monetarily.
+
+Eventually, the application will be expanded into being able to track payout rates from multiple DSPs, such as Apple Music, Amazon, YouTube and more.
 
 ## Setup Steps
-1. Fork and clone this repository.
-2. Run install command to install all dependencies
-3. Use start command to spin up the server.
-4. Important Links
-5. Other Repo
-6. Deployed API
-7. Deployed Client
+
+1. [Fork and clone](https://git.generalassemb.ly/ga-wdi-boston/meta/wiki/ForkAndClone) this repository.
+1. Run `install command` to install all dependencies
+1. Use `start command` to spin up the server.
+
+## Important Links
+
+- [Other Repo](www.link.com)
+- [Deployed API](www.link.com)
+- [Deployed Client](www.link.com)
 
 ## Planning Story
 
-Lorem ipsum dolor amet cloud bread letterpress squid actually, single-origin coffee williamsburg af poutine fingerstache austin semiotics paleo man braid vexillologist. Tumeric literally banjo pickled disrupt cold-pressed thundercats shoreditch try-hard health goth intelligentsia pop-up small batch skateboard farm-to-table. Meh tofu fam, direct trade tattooed stumptown etsy everyday carry activated charcoal. Neutra cornhole polaroid literally salvia, listicle tofu.
+The vision for ArtistKey is to be the go to dashboard for managers to check the monetary success of their artists and help them make educated decisions in the future.
 
-## User Stories
-As a user I want to sign in/up
-As a user I want to Create a new < resource >
-As a user I want to Read multiple < resources >
-As a user I want to Read a single < resource >
-As a user I want to Update a < resource > I own
-As a user I want to Delete a < resource > I own
+I used Notion to keep track of the models I needed to make in Django, the serializers and views that were needed to format and return the data properly to the client, and the components I needed to build in React. By breaking it down like this, I was able to focus on the functionality of one given resource at a time. This ensured that I wouldn't move on to the frontend until the backend was totally set; the models looked good, I could properly CRUD in the Django CMS, etc. Then I moved onto the front end and worked on one component at a time - CRUD-ing from the client on one resource at a time (Artist, then Track).
 
-## Technologies Used
-jQuery
-HTML/CSS
-Bootstrap
-Javascript
-Catalog of Routes
-Verb	URI Pattern
-GET	/resources
-GET	/resources/:id
-POST	/resources
-PATCH	/resources/:id
-DELETE	/resources/:id
+I focused intently on how I set up my wireframes and what my user stories are in order for the user to have a great experience while using ArtistKey.
 
-## Unsolved Problems
-Still need to ....
-Would like to eventually ....
+### User Stories
+
+- As a user, I would like to signup, signin, signout, and change password while signed in.
+- As a user, I would like to be able to create 'Artists' by adding them from the Spotify API
+- As a user, I would like my 'Artists' to have 'Tracks' associated with them that are taken from the Spotify API
+- As a user, I would like to see my expected revenue based on current average Spotify payout rate compared agains the number of streams a certain track has
+
+### Technologies Used
+
+- Django
+- Rest Framework
+- CORS
+
+### Catalog of Routes
+
+Verb         |	URI Pattern
+------------ | -------------
+GET | /artists/
+GET | /tracks/artist_id
+POST | /new-artists/
+POST | /tracks/artist_id
+PATCH | /artists/artist_id
+PATCH | /tracks/track/track_id
+DELETE | /artists/artist_id
+DELETE | /tracks/track/track_id
+
+### Future Versions
+
+Some additions I will be making on the Track Model:
+- Contract splits (to allow managers to more acturately understand how much they will be paid)
+- Numbers all display as comma separated values (i.e. 1,000 instead of 1000)
+- Connect to the Spotify API to retrieve artist data
+- Connect to other DSP APIs to retrieve data from them (Shazam, Apple Music, etc)
 
 ## Images
-App Screenshot:
-screenshot
 
-Wireframe:
-wireframe
-
-ERD:
-ERD
+#### ERD:
+![ERD](https://imgur.com/yaEAkq3)

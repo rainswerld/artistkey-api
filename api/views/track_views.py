@@ -25,10 +25,11 @@ class Tracks(generics.ListCreateAPIView):
         data = TrackSerializer(artist_tracks, many=True).data
         return Response({ 'tracks': data })
 
-    def post(self, request):
+    def post(self, request, artist_id):
         """Create request"""
-        # Add user to request data object
-        request.data['track']['artist']['owner'] = request.artist.owner.id
+        print(request.data)
+        # Add track to specific artist
+        # request.data['track'] = request.track.owner.id
         # Serialize/create track
         track = TrackSerializer(data=request.data['track'])
         # If the track data is valid according to our serializer...
@@ -41,16 +42,17 @@ class Tracks(generics.ListCreateAPIView):
 
 class TrackDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes=(IsAuthenticated,)
-    def get(self, request, pk):
+    def get(self, request, track_id):
         """Show request"""
         # Locate the track to show
-        track = get_object_or_404(Track, pk=pk)
+        track = get_object_or_404(Track, id=track_id)
         # Only want to show owned tracks?
         # if not request.artist.owner.id == artist.owner.id:
         #     raise PermissionDenied('Unauthorized, you do not own the artist this track is attached to')
 
         # Run the data through the serializer so it's formatted
-        track = TrackSerializer(track).data
+        print(track)
+        data = TrackSerializer(track).data
         return Response({ 'track': data })
 
     def delete(self, request, pk):
@@ -64,7 +66,7 @@ class TrackDetail(generics.RetrieveUpdateDestroyAPIView):
         track.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    def partial_update(self, request, pk):
+    def partial_update(self, request, track_id):
         """Update Request"""
         # Remove owner from request object
         # This "gets" the owner key on the data['artist'] dictionary
@@ -72,16 +74,15 @@ class TrackDetail(generics.RetrieveUpdateDestroyAPIView):
         # remove it.
         # if request.data['track'].get('owner', False):
         #     del request.data['track']['owner']
-
         # Locate Track
         # get_object_or_404 returns a object representation of our Artist
-        track = get_object_or_404(Track, pk=pk)
+        track = get_object_or_404(Track, id=track_id)
         # Check if user is the same as the request.user.id
         # if not request.user.id == artist.owner.id:
         #     raise PermissionDenied('Unauthorized, you do not own this artist')
 
         # Add owner to data object now that we know this user owns the resource
-        request.data['track']['artist']['owner'] = request.artist.owner.id
+        # request.data['track']['artist']['owner'] = request.artist.owner.id
         # Validate updates with serializer
         data = TrackSerializer(track, data=request.data['track'])
         if data.is_valid():

@@ -20,7 +20,7 @@ class Artist(models.Model):
 
   def __str__(self):
     # This must return a string
-    return f"{self.name} has {self.current_followers} followers. {self.name} has {self.current_monthly_listeners} monthly listeners."
+    return f"{self.name}"
 
   def as_dict(self):
     """Returns dictionary version of Artist models"""
