@@ -58,7 +58,5 @@ Some additions I will be making on the Track Model:
 - Connect to the Spotify API to retrieve artist data
 - Connect to other DSP APIs to retrieve data from them (Shazam, Apple Music, etc)
 
-## Images
-
 #### ERD:
 ![ERD](https://imgur.com/yaEAkq3)
