@@ -1,2 +1,2 @@
-web: gunicorn artistkey-api
+web: gunicorn artistkey-api.wsgi
 release: python manage.py migrate
