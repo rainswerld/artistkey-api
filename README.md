@@ -7,14 +7,17 @@ Eventually, the application will be expanded into being able to track payout rat
 ## Setup Steps
 
 1. [Fork and clone](https://git.generalassemb.ly/ga-wdi-boston/meta/wiki/ForkAndClone) this repository.
-1. Run `install command` to install all dependencies
-1. Use `start command` to spin up the server.
+2. Checkout to a new branch.
+3. Run `pipenv shell` to start up your virtual environment.
+4. Run `pipenv install` to install dependencies.
+5. Generate and run migrations with `python3 manage.py makemigrations` and `python3 manage.py migrate`.
+6. Run the server with `python3 manage.py runserver`.
 
 ## Important Links
 
 - [ArtistKey Client Repo](https://github.com/rainswerld/artistkey-client)
-- [Deployed API](www.link.com)
-- [Deployed Client](www.link.com)
+- [Deployed API](https://git.heroku.com/artistkey-api.git)
+- [Deployed Client](https://rainswerld.github.io/artistkey-client/#/)
 
 ## Planning Story
 
