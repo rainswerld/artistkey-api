@@ -27,7 +27,6 @@ class Tracks(generics.ListCreateAPIView):
 
     def post(self, request, artist_id):
         """Create request"""
-        print(request.data)
         # Add track to specific artist
         # request.data['track'] = request.track.owner.id
         # Serialize/create track
@@ -51,7 +50,6 @@ class TrackDetail(generics.RetrieveUpdateDestroyAPIView):
         #     raise PermissionDenied('Unauthorized, you do not own the artist this track is attached to')
 
         # Run the data through the serializer so it's formatted
-        print(track)
         data = TrackSerializer(track).data
         return Response({ 'track': data })
 
