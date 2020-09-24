@@ -62,4 +62,4 @@ Some additions I will be making on the Track Model:
 - Connect to other DSP APIs to retrieve data from them (Shazam, Apple Music, etc)
 
 #### ERD:
-![ERD](https://imgur.com/yaEAkq3)
+![ERD](docs/img/artistkey_erd.png)
